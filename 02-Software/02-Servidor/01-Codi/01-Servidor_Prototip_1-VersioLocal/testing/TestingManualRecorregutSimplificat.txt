@@ -1,0 +1,57 @@
+url -k -s -X POST "https://localhost:8443/tauleta/declarar" \
+     -H "Content-Type: application/json" \
+     -d '{"contrasenya":"12345", "model_dispositiu":"Tauleta Simulada Bash"}'
+->
+{"status":"declarada","id_tauleta":"5cc793ba-ecfa-4a5d-9e32-59fae8e06b92","ack":true,"missatge":"Registre completat i persistit correctament"}
+
+
+
+echo -n '{"detall_ocult":"Usuari conflictiu a la zona de caixes."}' | sha256sum
+->
+4b72333be5f90a8ca67efd851677ff55984155d87f29001b86d8a3a79e1a88c8  -
+
+
+echo -n '{"tipus":"Robatori","zona":"Pasillo 3"}' | sha256sum
+->
+531b478067b88ee5ee061d3f6f554fc67026fd433935e6650479ce672d02278b  -
+
+
+curl -k -X POST "https://localhost:8443/incident/sincro/data" \
+     -H "Content-Type: application/json" \
+     -d "{
+       \"incident_in\": {
+         \"ids\": {
+           \"tablet\": \"5cc793ba-ecfa-4a5d-9e32-59fae8e06b92\",
+           \"incident\": \"inc-bash-001\"
+         },
+         \"contingut_dinamic_privat\": {\"detall_ocult\":\"Usuari conflictiu a la zona de caixes.\"},
+         \"contingut_dinamic_public\": {\"tipus\":\"Robatori\",\"zona\":\"Pasillo 3\"},
+         \"datetime\": \"2026-06-08T15:30:00Z\"
+       },
+       \"hash_data\": {
+         \"privat\": \"4b72333be5f90a8ca67efd851677ff55984155d87f29001b86d8a3a79e1a88c8\",
+         \"public\": \"531b478067b88ee5ee061d3f6f554fc67026fd433935e6650479ce672d02278b\"
+       }
+     }"
+     ->
+     {"detail":"2005-Error de persistència al servidor"}
+     
+     - correcions de codi -
+     
+curl -k -X POST "https://localhost:8443/incident/sincro/data"      -H "Content-Type: application/json"      -d "{
+       \"incident_in\": {
+         \"ids\": {
+           \"tablet\": \"5cc793ba-ecfa-4a5d-9e32-59fae8e06b92\",
+           \"incident\": \"inc-bash-001\"
+         },
+         \"contingut_dinamic_privat\": {\"detall_ocult\":\"Usuari conflictiu a la zona de caixes.\"},
+         \"contingut_dinamic_public\": {\"tipus\":\"Robatori\",\"zona\":\"Pasillo 3\"},
+         \"datetime\": \"2026-06-08T15:30:00Z\"
+       },
+       \"hash_data\": {
+         \"privat\": \"4b72333be5f90a8ca67efd851677ff55984155d87f29001b86d8a3a79e1a88c8\",
+         \"public\": \"531b478067b88ee5ee061d3f6f554fc67026fd433935e6650479ce672d02278b\"
+       }
+     }"
+->
+{"status":"sincronitzat","id_referencia":"inc-bash-001","ack":true,"missatge":"Dades rebudes i verificades"}

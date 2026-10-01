@@ -1,0 +1,211 @@
+{
+  "main": {
+    "id": "014d44072b017801",
+    "type": "split",
+    "children": [
+      {
+        "id": "0361067820bc5a89",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f96c12e528d01dc3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "02-Software/01-Client-V1.01/03-Manuals_Suport/01-README.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01-README"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4a45b4c3ac861167",
+    "type": "split",
+    "children": [
+      {
+        "id": "3fff62fc7c7566ce",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4cbad09bf5eb70aa",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "1d56832f24f8dbd9",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "564d5f74b06830e8",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "right": {
+    "id": "0e98203c03e2fc38",
+    "type": "split",
+    "children": [
+      {
+        "id": "7c921bd9c18a49f1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "125052e1cc2d0a1f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "02-Software/01-Client-V1.01/03-Manuals_Suport/01-README.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes"
+            }
+          },
+          {
+            "id": "02dc339b80e539f4",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "02-Software/01-Client-V1.01/03-Manuals_Suport/01-README.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes"
+            }
+          },
+          {
+            "id": "dfabff6cda5345b7",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "1d484cdc5eeae7e4",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas las propiedades"
+            }
+          },
+          {
+            "id": "8cb049575fce61a9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "02-Software/01-Client-V1.01/03-Manuals_Suport/01-README.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false,
+      "bases:Crear nueva base": false
+    }
+  },
+  "active": "f96c12e528d01dc3",
+  "lastOpenFiles": [
+    "02-Software/01-Client-V1.01/03-Manuals_Suport/02-Guia_de_creació_de_qüestionaris.md",
+    "02-Software/01-Client-V1.01/03-Manuals_Suport/02-Guia_de_creació_de_qüestionaris..md",
+    "Versio neutre.md",
+    "02-Guia_de_creació_de_qüestionaris..md",
+    "02-Guia_de_creació_de_qüestionaris.md",
+    "02-Software/01-Client-V1.01/03-Manuals_Suport/01-README.md",
+    "01-Documentacio/03-Prototip 1/03-Tecnologies.md",
+    "01-Documentacio/03-Prototip 1/03-Tecnologies.pdf",
+    "01-Documentacio/03-Prototip 1/02-Diagrama-prototip_1-Servidor.png",
+    "01-Documentacio/03-Prototip 1/02-Diagrama-prototip_1.pdf",
+    "01-Documentacio/03-Prototip 1/02-Diagrama-prototip_1.md",
+    "01-Documentacio/03-Prototip 1/01-Comunicacio_Client-Servidor.md",
+    "01-Documentacio/03-Prototip 1/01-Comunicacio_Client-Servidor.pdf",
+    "01-Documentacio/02-App Completa/01-Arquitectura_del_Sistema.png",
+    "01-Documentacio/02-App Completa/01-Codi_i_Link-Diagrama_d'Arquitectura_del_Sistema.md",
+    "01-Documentacio/01-Objectius_i_Requisits/01-Objectius i Requisits.md"
+  ]
+}

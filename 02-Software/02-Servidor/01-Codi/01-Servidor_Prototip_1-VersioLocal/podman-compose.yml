@@ -1,0 +1,89 @@
+version: '3.8'
+
+networks:
+  # Xarxa 1: Trànsit exterior Proxy <-> Backend
+  xarxa_frontal:
+    driver: bridge
+  # Xarxa 2: Trànsit interior Backend <-> MongoDB
+  xarxa_interna:
+    driver: bridge
+
+services:
+
+  # -------------------------------------------------------------
+  # 1. PROXY INVERS (HTTPS Interceptor)
+  # -------------------------------------------------------------
+  proxy_https:
+    image: docker.io/library/nginx:alpine
+    container_name: proxy_https
+    ports:
+    #  - "80:80"   # HTTP per a la redirecció
+      - "8443:443" # HTTPS segur
+    volumes:
+      - ./proxy/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./proxy/certs:/etc/nginx/certs:ro
+    depends_on:
+      - backend_app
+    networks:
+      - xarxa_frontal # El proxy NOMÉS té accés a la zona frontal
+    restart: always
+
+  # -------------------------------------------------------------
+  # 2. SERVIDOR PYTHON (Core App + Llibreria de Cache)
+  # -------------------------------------------------------------
+  backend_app:
+    build: ./backend
+    container_name: backend_app
+    environment:
+      - MONGO_URI=mongodb://usuari_admin:contrasenya_super_segura@base_dades_nosql:27017/db_principal?authSource=admin
+    volumes:
+      # Carpeta local per al codi i fitxers de cache
+      - ./backend:/app:z
+    depends_on:
+      - base_dades_nosql
+    networks:
+      - xarxa_frontal # Escolta les peticions del proxy
+      - xarxa_interna # Es connecta a la base de dades
+    restart: always
+
+  # -------------------------------------------------------------
+  # 3. BASE DE DADES MONGODB (Fitxers localitzats a './mongo_data')
+  # -------------------------------------------------------------
+  base_dades_nosql:
+    image: docker.io/library/mongo:7.0
+    container_name: base_dades_nosql
+   # --*---///Borrar\\\---*-- 
+    ports:
+      - "27017:27017" # <--- AFEGEIX AIXÒ NOMÉS PER A PROVES
+   # --*---\\\Borrar///---*-- 
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=usuari_admin
+      - MONGO_INITDB_ROOT_PASSWORD=contrasenya_super_segura
+      - MONGO_INITDB_DATABASE=db_principal
+    volumes:
+      # Mantenim el ':Z' (Majúscula) perquè cap altre contenidor pugui corrompre aquests fitxers
+      - ./mongoDB:/data/db:Z # La ruta interna on MongoDB desa la informació física
+    networks:
+      - xarxa_interna # Aïllada completament de l'exterior i del proxy
+    restart: always
+    
+    # --*---///Borrar\\\---*-- 
+    
+  # -------------------------------------------------------------
+  # 4. VISOR WEB DE LA BASE DE DADES (Només per a proves)
+  # -------------------------------------------------------------
+  interficie_db:
+    image: docker.io/library/mongo-express
+    container_name: interficie_db
+    ports:
+      - "8081:8081" # Port per accedir des del teu navegador
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=usuari_admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=contrasenya_super_segura
+      - ME_CONFIG_MONGODB_SERVER=base_dades_nosql # El nom del servei de dades
+    networks:
+      - xarxa_interna # Es connecta a la xarxa interna per veure la BD
+    depends_on:
+      - base_dades_nosql
+    restart: always
+    # --*---\\\Borrar///---*-- 

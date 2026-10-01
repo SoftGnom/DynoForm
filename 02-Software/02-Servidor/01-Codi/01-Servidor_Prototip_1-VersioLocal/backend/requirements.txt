@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+tinydb
+cryptography
+canonicaljson
+python-multipart
+pymongo
